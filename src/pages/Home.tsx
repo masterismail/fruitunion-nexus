@@ -166,6 +166,71 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">What Our Customers Say</h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center gap-4">
+                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl">
+                    P
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Priya Sharma</CardTitle>
+                    <CardDescription>Customer since 2024</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  "The quality of fruits is exceptional! Always fresh and delivered on time. My family loves the variety in the subscription."
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center gap-4">
+                  <div className="h-12 w-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold text-xl">
+                    R
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Rahul Mehta</CardTitle>
+                    <CardDescription>Customer since 2024</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  "Best decision to subscribe! No more rushing to the market. Fresh organic fruits delivered right to my door every week."
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-center gap-4">
+                  <div className="h-12 w-12 rounded-full bg-accent/10 flex items-center justify-center text-accent font-bold text-xl">
+                    A
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Anita Desai</CardTitle>
+                    <CardDescription>Customer since 2023</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  "Amazing service! The fruits are always perfectly ripe and the delivery partner is very professional. Highly recommend!"
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing Section */}
       <section id="pricing" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
@@ -228,14 +293,28 @@ const Home = () => {
 
       {/* Footer */}
       <footer className="bg-muted py-12 border-t">
-        <div className="container mx-auto px-4 text-center">
-          <img src={heroFruits} alt="The Fruit Union" className="h-16 w-auto mx-auto mb-4 rounded-full object-cover" />
-          <p className="text-muted-foreground mb-4">
-            Fresh fruits, delivered with love.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            © 2025 The Fruit Union. All rights reserved.
-          </p>
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center text-center">
+            <img src={heroFruits} alt="The Fruit Union" className="h-16 w-auto mb-4 rounded-full object-cover" />
+            <p className="text-muted-foreground mb-4">
+              Fresh fruits, delivered with love.
+            </p>
+            <div className="flex gap-4 mb-4">
+              <a 
+                href="https://www.instagram.com/thefruitunion/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              © 2025 The Fruit Union. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
     </div>

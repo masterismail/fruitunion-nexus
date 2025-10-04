@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.jpg";
 
@@ -25,6 +25,15 @@ const Navbar = () => {
             <Link to="/auth" className="text-foreground hover:text-primary transition-colors">
               Login
             </Link>
+            <a 
+              href="https://www.instagram.com/thefruitunion/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-foreground hover:text-primary transition-colors"
+              aria-label="Instagram"
+            >
+              <Instagram className="h-5 w-5" />
+            </a>
             <Button asChild>
               <Link to="/auth">Get Started</Link>
             </Button>

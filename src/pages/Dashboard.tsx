@@ -41,11 +41,10 @@ const Dashboard = () => {
         .from("user_roles")
         .select("role")
         .eq("user_id", session.user.id)
-        .single();
+        .maybeSingle();
 
-      if (roleData) {
-        setUserRole(roleData.role);
-      }
+      // Default to 'customer' if no role found
+      setUserRole(roleData?.role || 'customer');
       
       setLoading(false);
     };
