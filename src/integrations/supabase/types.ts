@@ -19,6 +19,7 @@ export type Database = {
           created_at: string
           id: string
           next_payment_date: string
+          payment_history: Json | null
           subscription_end_date: string
           subscription_plan: string
           subscription_start_date: string
@@ -30,6 +31,7 @@ export type Database = {
           created_at?: string
           id?: string
           next_payment_date: string
+          payment_history?: Json | null
           subscription_end_date: string
           subscription_plan: string
           subscription_start_date: string
@@ -41,6 +43,7 @@ export type Database = {
           created_at?: string
           id?: string
           next_payment_date?: string
+          payment_history?: Json | null
           subscription_end_date?: string
           subscription_plan?: string
           subscription_start_date?: string
@@ -208,6 +211,16 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      create_customer_account: {
+        Args: {
+          p_full_name: string
+          p_password: string
+          p_phone?: string
+          p_subscription_plan?: string
+          p_username: string
+        }
+        Returns: string
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
