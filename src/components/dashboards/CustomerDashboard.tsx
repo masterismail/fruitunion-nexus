@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Package, Calendar, CreditCard, LogOut } from "lucide-react";
@@ -44,7 +45,7 @@ const CustomerDashboard = ({ user }: CustomerDashboardProps) => {
         .from("customers")
         .select("*")
         .eq("user_id", user.id)
-        .single();
+        .maybeSingle();
 
       if (customerData) {
         setSubscription(customerData);
@@ -109,7 +110,7 @@ const CustomerDashboard = ({ user }: CustomerDashboardProps) => {
                   <Package className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{subscription.subscription_plan}</div>
+                  <div className="text-2xl font-bold capitalize">{subscription.subscription_plan}</div>
                   <Badge className="mt-2" variant={
                     subscription.subscription_status === "active" ? "default" : "secondary"
                   }>
@@ -137,7 +138,7 @@ const CustomerDashboard = ({ user }: CustomerDashboardProps) => {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{completedDeliveries}</div>
-                  <p className="text-sm text-muted-foreground">Total deliveries</p>
+                  <p className="text-sm text-muted-foreground">Total delivered</p>
                 </CardContent>
               </Card>
             </div>
@@ -150,25 +151,39 @@ const CustomerDashboard = ({ user }: CustomerDashboardProps) => {
                 {deliveries.length === 0 ? (
                   <p className="text-muted-foreground">No deliveries yet.</p>
                 ) : (
-                  <div className="space-y-4">
-                    {deliveries.map((delivery) => (
-                      <div key={delivery.id} className="flex items-center justify-between p-4 border rounded-lg">
-                        <div>
-                          <p className="font-medium">{delivery.items}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {new Date(delivery.delivery_date).toLocaleDateString()}
-                          </p>
-                        </div>
-                        <Badge variant={
-                          delivery.delivery_status === "delivered" ? "default" :
-                          delivery.delivery_status === "in_transit" ? "secondary" :
-                          "outline"
-                        }>
-                          {delivery.delivery_status}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Date</TableHead>
+                        <TableHead>Items</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Delivered At</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {deliveries.map((delivery) => (
+                        <TableRow key={delivery.id}>
+                          <TableCell>{new Date(delivery.delivery_date).toLocaleDateString()}</TableCell>
+                          <TableCell>{delivery.items}</TableCell>
+                          <TableCell>
+                            <Badge variant={
+                              delivery.delivery_status === "delivered" ? "default" :
+                              delivery.delivery_status === "in_transit" ? "secondary" :
+                              "outline"
+                            }>
+                              {delivery.delivery_status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            {delivery.delivered_at 
+                              ? new Date(delivery.delivered_at).toLocaleString()
+                              : '-'
+                            }
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
                 )}
               </CardContent>
             </Card>
