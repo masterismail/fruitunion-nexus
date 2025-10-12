@@ -6,6 +6,22 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Navbar from "@/components/Navbar";
 import heroFruits from "@/assets/hero-fruits.jpg";
 
+import main from "@/assets/juices/main.jpeg";
+import chia from "@/assets/juices/chia.jpeg";
+import beetroot from "@/assets/juices/beetroot.jpeg";
+import carrot from "@/assets/juices/carrot.jepg";
+import moringa from "@/assets/juices/moringa.jpeg";
+import abc from "@/assets/juices/abc.jpeg";
+
+import mainBox from "@/assets/fruit-boxes/main.jpeg";
+import fb1 from "@/assets/fruit-boxes/fb1.jpeg";
+import fb2 from "@/assets/fruit-boxes/fb2.jpeg";
+import fb3 from "@/assets/fruit-boxes/fb3.jpeg";
+
+import amla from "@/assets/whole-fruits/amla.jpeg";
+import mixed from "@/assets/whole-fruits/mixed.jpg"; // if available
+
+
 const Home = () => {
   const juiceMenu = [
     { name: "Ash Gourd Juice", price: "₹1999" },
@@ -35,10 +51,10 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div 
+        <div
           className="absolute inset-0 z-0"
           style={{
             backgroundImage: `url(${heroFruits})`,
@@ -48,7 +64,7 @@ const Home = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60" />
         </div>
-        
+
         <div className="container mx-auto px-4 z-10">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
@@ -70,10 +86,10 @@ const Home = () => {
 
         {/* Video Preview Section */}
         <div className="absolute bottom-20 right-10 hidden lg:block">
-          <video 
-            autoPlay 
-            loop 
-            muted 
+          <video
+            autoPlay
+            loop
+            muted
             playsInline
             className="w-64 h-auto rounded-lg shadow-xl border-2 border-primary"
           >
@@ -150,14 +166,29 @@ const Home = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">Fresh Juices</h2>
+
           <Carousel className="max-w-5xl mx-auto">
             <CarouselContent>
-              {[1, 2, 3, 4, 5, 6].map((i) => (
+              {[
+                { name: "main", img: "/src/assets/juices/main.jpeg" },
+                { name: "Chia Juice", img: "/src/assets/juices/chia.jpeg" },
+                { name: "Beetroot Juice", img: "/src/assets/juices/beetroot.jpeg" },
+                { name: "Carrot Juice", img: "/src/assets/juices/carrot.jpeg" },
+                { name: "Moringa Juice", img: "/src/assets/juices/moringa.jpeg" },
+                { name: "ABC Juice", img: "/src/assets/juices/abc.jpeg" },
+              ].map((juice, i) => (
                 <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <Card>
-                      <CardContent className="flex aspect-square items-center justify-center p-6 bg-muted">
-                        <span className="text-3xl font-semibold text-muted-foreground">Juice {i}</span>
+                  <div className="p-2">
+                    <Card className="overflow-hidden rounded-2xl shadow-md">
+                      <CardContent className="p-0">
+                        <img
+                          src={juice.img}
+                          alt={juice.name}
+                          className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="p-4 text-center bg-white">
+                          <h3 className="text-xl font-semibold">{juice.name}</h3>
+                        </div>
                       </CardContent>
                     </Card>
                   </div>
@@ -169,19 +200,33 @@ const Home = () => {
           </Carousel>
         </div>
       </section>
+
 
       {/* Fruit Boxes Carousel Section */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">Fruit Boxes</h2>
+
           <Carousel className="max-w-5xl mx-auto">
             <CarouselContent>
-              {[1, 2, 3, 4].map((i) => (
+              {[
+                { name: "Main Fruit Box", img: "/src/assets/fruit-boxes/main.jpeg" },
+                { name: "Fruit Box 1", img: "/src/assets/fruit-boxes/fb1.jpeg" },
+                { name: "Fruit Box 2", img: "/src/assets/fruit-boxes/fb2.jpeg" },
+                { name: "Fruit Box 3", img: "/src/assets/fruit-boxes/fb3.jpeg" },
+              ].map((box, i) => (
                 <CarouselItem key={i} className="md:basis-1/2">
-                  <div className="p-1">
-                    <Card>
-                      <CardContent className="flex aspect-square items-center justify-center p-6 bg-muted">
-                        <span className="text-3xl font-semibold text-muted-foreground">Fruit Box {i}</span>
+                  <div className="p-2">
+                    <Card className="overflow-hidden rounded-2xl shadow-md">
+                      <CardContent className="p-0">
+                        <img
+                          src={box.img}
+                          alt={box.name}
+                          className="w-full h-80 object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="p-4 text-center bg-white">
+                          <h3 className="text-xl font-semibold">{box.name}</h3>
+                        </div>
                       </CardContent>
                     </Card>
                   </div>
@@ -194,29 +239,43 @@ const Home = () => {
         </div>
       </section>
 
+
       {/* Whole Fruit Delivery Carousel Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">Whole Fruit Delivery</h2>
+
           <Carousel className="max-w-5xl mx-auto">
             <CarouselContent>
-              {[1, 2].map((i) => (
+              {[
+                { name: "Amla", img: "/src/assets/whole-fruits/amla.jpeg" },
+                { name: "Mixed Whole Fruits", img: "/src/assets/whole-fruits/mixed.jpg" }, // optional, add if available
+              ].map((fruit, i) => (
                 <CarouselItem key={i}>
-                  <div className="p-1">
-                    <Card>
-                      <CardContent className="flex aspect-video items-center justify-center p-6 bg-muted">
-                        <span className="text-3xl font-semibold text-muted-foreground">Whole Fruit {i}</span>
+                  <div className="p-2">
+                    <Card className="overflow-hidden rounded-2xl shadow-md">
+                      <CardContent className="p-0">
+                        <img
+                          src={fruit.img}
+                          alt={fruit.name}
+                          className="w-full h-[28rem] object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="p-4 text-center bg-white">
+                          <h3 className="text-xl font-semibold">{fruit.name}</h3>
+                        </div>
                       </CardContent>
                     </Card>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
+
             <CarouselPrevious />
             <CarouselNext />
           </Carousel>
         </div>
       </section>
+
 
       {/* Video Section */}
       <section className="py-20 bg-muted/30">
@@ -319,7 +378,7 @@ const Home = () => {
           <p className="text-center text-muted-foreground mb-12 text-lg">
             Monthly subscription for fresh fruit bowls
           </p>
-          
+
           <div className="flex justify-center">
             {pricingPlans.map((plan) => (
               <Card key={plan.name} className={plan.popular ? "border-primary border-2 relative max-w-md w-full" : "max-w-md w-full"}>
@@ -381,14 +440,14 @@ const Home = () => {
               Fresh fruits, delivered with love.
             </p>
             <div className="flex gap-4 mb-4">
-              <a 
-                href="https://www.instagram.com/thefruitunion/" 
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/thefruitunion/"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                 </svg>
               </a>
             </div>
