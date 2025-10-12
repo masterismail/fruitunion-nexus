@@ -2,44 +2,33 @@ import { Link } from "react-router-dom";
 import { CheckCircle2, Leaf, Truck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Navbar from "@/components/Navbar";
 import heroFruits from "@/assets/hero-fruits.jpg";
 
 const Home = () => {
+  const juiceMenu = [
+    { name: "Ash Gourd Juice", price: "₹1999" },
+    { name: "ABC Juice (Apple, Beetroot, Carrot)", price: "₹2499" },
+    { name: "Carrot Juice", price: "₹2199" },
+    { name: "Beetroot Juice", price: "₹2199" },
+    { name: "Moringa Juice", price: "₹1999" },
+    { name: "Keera Juice (Cucumber)", price: "₹1499" },
+    { name: "Sorakaya Juice (Bottle Gourd)", price: "₹1699" }
+  ];
+
   const pricingPlans = [
     {
-      name: "Weekly Plan",
-      price: "₹299",
-      period: "/week",
-      features: [
-        "Fresh fruits delivery every week",
-        "Seasonal variety selection",
-        "Free delivery within city",
-        "Cancel anytime"
-      ]
-    },
-    {
-      name: "Bi-Weekly Plan",
-      price: "₹549",
-      period: "/2 weeks",
-      features: [
-        "Fresh fruits delivery twice a month",
-        "Premium seasonal fruits",
-        "Free delivery",
-        "Flexible scheduling"
-      ],
-      popular: true
-    },
-    {
-      name: "Monthly Plan",
-      price: "₹999",
+      name: "Fresh Fruit Bowls",
+      price: "₹2499",
       period: "/month",
       features: [
-        "Weekly fresh fruit deliveries",
-        "Premium exotic fruits included",
-        "Priority delivery slots",
-        "Dedicated support"
-      ]
+        "Fresh fruit bowls delivered monthly",
+        "Seasonal variety selection",
+        "Premium quality fruits",
+        "Free delivery within city"
+      ],
+      popular: true
     }
   ];
 
@@ -137,8 +126,100 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Video Section */}
+      {/* Juice Menu Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4">Our Juice Menu</h2>
+          <p className="text-center text-muted-foreground mb-12 text-lg">
+            Fresh, healthy juices delivered to your doorstep
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {juiceMenu.map((juice) => (
+              <Card key={juice.name} className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <CardTitle className="text-lg">{juice.name}</CardTitle>
+                  <CardDescription className="text-2xl font-bold text-primary">{juice.price}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Juice Carousel Section */}
       <section className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">Fresh Juices</h2>
+          <Carousel className="max-w-5xl mx-auto">
+            <CarouselContent>
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex aspect-square items-center justify-center p-6 bg-muted">
+                        <span className="text-3xl font-semibold text-muted-foreground">Juice {i}</span>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </section>
+
+      {/* Fruit Boxes Carousel Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">Fruit Boxes</h2>
+          <Carousel className="max-w-5xl mx-auto">
+            <CarouselContent>
+              {[1, 2, 3, 4].map((i) => (
+                <CarouselItem key={i} className="md:basis-1/2">
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex aspect-square items-center justify-center p-6 bg-muted">
+                        <span className="text-3xl font-semibold text-muted-foreground">Fruit Box {i}</span>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </section>
+
+      {/* Whole Fruit Delivery Carousel Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12">Whole Fruit Delivery</h2>
+          <Carousel className="max-w-5xl mx-auto">
+            <CarouselContent>
+              {[1, 2].map((i) => (
+                <CarouselItem key={i}>
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex aspect-video items-center justify-center p-6 bg-muted">
+                        <span className="text-3xl font-semibold text-muted-foreground">Whole Fruit {i}</span>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">Learn About Our Fruits</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -232,16 +313,16 @@ const Home = () => {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 bg-muted/30">
+      <section id="pricing" className="py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-4">Choose Your Plan</h2>
           <p className="text-center text-muted-foreground mb-12 text-lg">
-            Flexible subscription plans to suit your needs
+            Monthly subscription for fresh fruit bowls
           </p>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="flex justify-center">
             {pricingPlans.map((plan) => (
-              <Card key={plan.name} className={plan.popular ? "border-primary border-2 relative" : ""}>
+              <Card key={plan.name} className={plan.popular ? "border-primary border-2 relative max-w-md w-full" : "max-w-md w-full"}>
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                     <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
